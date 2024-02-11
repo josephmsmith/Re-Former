@@ -1,0 +1,15 @@
+
+<div>
+    <!-- create a new form -->
+    <%= form_with do |form| %>
+        <!-- Need 3 slots for username, email, and password -->
+        <%= form.label :username, "Username" %>
+        <%= form.text_field :username %>
+        <%= form.label :email, "Email" %>
+        <%= form.text_field :email %>
+        <%= form.label :password_digest, "Password" %>
+        <%= form.text_field :password_digest %>
+        <%= form.submit "Submit" %>
+
+    <% end %>
+</div>
