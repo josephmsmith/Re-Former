@@ -1,29 +1,44 @@
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
 <!-- Form using rails helpers -->
 <div>
     <!-- create a new form -->
-    <%= form_with do |form| %>
+    <%= form_with model: @user, local: true do |form| %>
         <!-- Need 3 slots for username, email, and password -->
         <%= form.label :username, "Username" %>
         <%= form.text_field :username %>
+
         <%= form.label :email, "Email" %>
         <%= form.text_field :email %>
-        <%= form.label :password_digest, "Password" %>
-        <%= form.text_field :password_digest %>
+
+        <%= form.label :password, "Password" %>
+        <%= form.password_field :password %>
+
         <%= form.submit "Submit" %>
 
     <% end %>
 </div>
 
 <!-- Create a form without helpers -->
-<div>
+<%# <div>
     <form action="/users/new" method = "GET">
-        <label for="username"></label>
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <%# <label for="username"></label>
         <input type="text" id="username" name="username">
         <label for="email"></label>
         <input type="text" id="email" name="email"></div>
         <label for="password"></label>
         <input type="text" id="password_digest" name="password_digest">
-        <input type="submit" value="submit">
-    </form>
-</div>
+        <input type="submit" value="submit"> %>
+    <%# </form>
+</div> %>
