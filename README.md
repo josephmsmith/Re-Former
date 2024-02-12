@@ -2,10 +2,10 @@
 
 This is part of the Forms Project in The Odin Project’s Ruby on Rails Curriculum. 
 
-Important notes regarding versions as well as personal notes. Feel free to use however you need.
+This contains important notes regarding the current versions as well as personal notes. Feel free to use however you need. Consider this a referesher or guidelines whenever you're creating a new form. Notes are intentionally short on README and a bit more extensive in the code.
 
-* Ruby 3.2.2
-
+* Ruby Version: 3.2.2
+* Rails Version: 7.1.2
 * Using asdf, direnv 2.33, nodejs 14.20
 
 ## Section 1 - Set up backend
