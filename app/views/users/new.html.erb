@@ -1,7 +1,10 @@
+<%# Evaluate for validation errors %>
 <% if @user.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <%# Summarize error count %>
+  <h2><%= pluralize(@user.errors.count, "error") %> blocked saving this user:</h2>
 
+  <%# Iterate over and display errors %>
   <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -10,35 +13,24 @@
 </div>
 <% end %>
 
-<!-- Form using rails helpers -->
+<%# Begin form section %>
 <div>
-    <!-- create a new form -->
+    <%# Utilizing form_with helper for @user %>
     <%= form_with model: @user, local: true do |form| %>
-        <!-- Need 3 slots for username, email, and password -->
+        <%# Field for user's username %>
         <%= form.label :username, "Username" %>
         <%= form.text_field :username %>
 
+        <%# Field for user's email address %>
         <%= form.label :email, "Email" %>
         <%= form.text_field :email %>
 
+        <%# Field for user's password, hidden input %>
         <%= form.label :password, "Password" %>
         <%= form.password_field :password %>
 
+        <%# Form submission button %>
         <%= form.submit "Submit" %>
 
     <% end %>
 </div>
-
-<!-- Create a form without helpers -->
-<%# <div>
-    <form action="/users/new" method = "GET">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
-        <%# <label for="username"></label>
-        <input type="text" id="username" name="username">
-        <label for="email"></label>
-        <input type="text" id="email" name="email"></div>
-        <label for="password"></label>
-        <input type="text" id="password_digest" name="password_digest">
-        <input type="submit" value="submit"> %>
-    <%# </form>
-</div> %>
